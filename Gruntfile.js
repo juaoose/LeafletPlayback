@@ -3,6 +3,9 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     
     concat: {
+      options: {
+        sourceMap: true
+      },
       dist: {
         src: [
           'src/prologue.js',
@@ -21,6 +24,9 @@ module.exports = function(grunt) {
     },
     
     uglify: {
+        options: {
+          sourceMap: function (path) { return path.replace(/.js/, ".map") }
+        },
         dist: {
             options: {
                 mangle: true,
